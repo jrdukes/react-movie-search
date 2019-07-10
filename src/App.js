@@ -1,25 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [criteria, setCriteria] = useState('');
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log('find movies`');
+  }
+
+  function handleChange(e) {
+    setCriteria(e.target.value);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className='section'>
+      <div className='container'>
+        <h1 className='title'>Movie Search</h1>
+        <form className='form'>
+          <div className='field'>
+            <label className='label'>Name:</label>
+            <div className='control'>
+              <input
+                type='text'
+                className='input'
+                value={criteria}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className='field'>
+            <button className='button is-primary'>Search</button>
+          </div>
+        </form>
+        <div className='box'>{criteria}'</div>
+      </div>
+    </section>
   );
 }
 
